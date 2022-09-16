@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инвестиционная карта Вологодской области</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=a98e9ffc-17bc-483f-ae75-d9e82eab85ca"
+        type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="header__left">
+                <img class="logo" src="https://abali.ru/wp-content/uploads/2013/11/gerb_vologodskoy_oblasti-235x300.png"
+                    alt="Лого">
+                <h1 class="header__title">Инвестиционная карта Вологодской области</h1>
+            </div>
+            <div class="header__right">
+                <ul class="contacts header__contacts">
+                    <li class="contacts__item">
+                        <a href="https://vk.com/rpgu_35" class="contacts__link" target="_blank">
+                            <img src="./img/VK-icon2.svg" alt="Иконка ВКонтакте" class="contacts__social-icon">
+                        </a>
+                    </li>
+                    <li class="contacts__item contacts__item_odnoklassniki">
+                        <a href="https://ok.ru/gosuslugi.oblast35" class="contacts__link" target="_blank">
+                            <img src="./img/odnoklassniki-icon2.svg" alt="Иконка Одноклассники"
+                                class="contacts__social-icon">
+                        </a>
+                    </li>
+                    <li class="contacts__item">
+                        <a href="https://www.youtube.com/user/vologdaoblast" class="contacts__link" target="_blank">
+                            <img src="./img/youtube-icon.svg" alt="Иконка Youtube" class="contacts__social-icon">
+                        </a>
+                    </li>
+                    <li class="contacts__item">
+                        <a href="#" class="contacts__link" target="_blank">
+                            <img src="./img/telegram-icon2.svg" alt="Иконка Телеграм" class="contacts__social-icon">
+                        </a>
+                    </li>
+                </ul>
+                <button type="button" class="request-btn">Подать заявку</button>
+            </div>
+        </header>
+
+        <main class="content">
+            <div id="map"></div>
+            <div class="menu">
+                <fieldset class="form menu__main-fieldset">
+                    <ul class="menu__list">
+                        <li class="menu__item investment-sites">
+                            <label for="investment-sites" class="form__label form__label_direction_right">
+                                <input type="checkbox" name="extra-option" id="investment-sites"
+                                    class="menu__options investment-sites__input" value="investment-sites">
+                                <span class="menu__pseudo-item menu__pseudo-item_type_checkbox"></span>
+                                <span class="menu__label-text">Инвестиционные площадки</span>
+                            </label>
+                            <ul class="investment-sites__list visually-hidden">
+                                <li class="investment-sites__item">
+                                    <label for="investment-sites-implemented" class="investment-sites__label">
+                                        <input type="checkbox" name="extra-option" id="investment-sites-implemented"
+                                            class="menu__options investment-sites__child-input"
+                                            value="investment-sites-implemented">
+                                        <span class="menu__pseudo-item menu__pseudo-item_type_checkbox"></span>
+                                        <span class="menu__label-text">Промышленно-производственного
+                                            типа</span>
+                                    </label>
+                                </li>
+                                <li class="investment-sites__item">
+                                    <label for="agroindustrial" class="investment-sites__label">
+                                        <input type="checkbox" name="extra-option" id="agroindustrial"
+                                            class="menu__options investment-sites__child-input" value="agroindustrial">
+                                        <span class="menu__pseudo-item menu__pseudo-item_type_checkbox"></span>
+                                        <span class="menu__label-text">Агропромышленного
+                                            типа</span>
+                                    </label>
+                                </li>
+                                <li class="investment-sites__item">
+                                    <label for="tourist" class="investment-sites__label">
+                                        <input type="checkbox" name="extra-option" id="tourist"
+                                            class="menu__options investment-sites__child-input" value="tourist">
+                                        <span class="menu__pseudo-item menu__pseudo-item_type_checkbox"></span>
+                                        <span class="menu__label-text">Туристско-рекреационного
+                                            типа</span>
+                                    </label>
+                                </li>
+                                <li class="investment-sites__item">
+                                    <label for="techno-innovative" class="investment-sites__label">
+                                        <input type="checkbox" name="extra-option" id="techno-innovative"
+                                            class="menu__options investment-sites__child-input"
+                                            value="techno-innovative">
+                                        <span class="menu__pseudo-item menu__pseudo-item_type_checkbox"></span>
+                                        <span class="menu__label-text">Технико-внедренческого типа</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu__item">
+                            <label for="preferential" class="form__label form__label_direction_right">
+                                <input type="checkbox" name="extra-option" id="preferential" class="menu__options"
+                                    value="preferential">
+                                <span class="menu__pseudo-item menu__pseudo-item_type_checkbox"></span>
+                                <span class="menu__label-text">Территории с преференциальными режимами</span>
+                            </label>
+                        </li>
+                        <li class="menu__item investment-projects">
+                            <label for="investment-projects" class="form__label form__label_direction_right investment">
+                                <input type="checkbox" name="extra-option" id="investment-projects"
+                                    class="menu__options investment-projects__input" value="investment-projects">
+                                <span class="menu__pseudo-item menu__pseudo-item_type_checkbox"></span>
+                                <span class="menu__label-text">Инвестиционные проекты</span>
+
+
+
+                            </label>
+                            <ul class="investment-projects__list visually-hidden">
+                                <li class="investment-projects__item">
+                                    <label for="investment-projects-implemented" class="investment-projects__label">
+                                        <input type="checkbox" name="extra-option" id="investment-projects-implemented"
+                                            class="menu__options investment-projects__child-input"
+                                            value="investment-projects-implemented">
+                                        <span class="menu__pseudo-item menu__pseudo-item_type_checkbox"></span>
+                                        <span
+                                            class="menu__label-text menu__label-text_status menu__label-text_status_implemented">Реализован</span>
+                                    </label>
+                                </li>
+                                <li class="investment-projects__item">
+                                    <label for="investment-projects-implementing" class="investment-projects__label">
+                                        <input type="checkbox" name="extra-option" id="investment-projects-implementing"
+                                            class="menu__options investment-projects__child-input"
+                                            value="investment-projects-implementing">
+                                        <span class="menu__pseudo-item menu__pseudo-item_type_checkbox"></span>
+                                        <span
+                                            class="menu__label-text menu__label-text_status menu__label-text_status_implementing">Реализуется</span>
+                                    </label>
+                                </li>
+                                <li class="investment-projects__item">
+                                    <label for="investment-projects-planned" class="investment-projects__label">
+                                        <input type="checkbox" name="extra-option" id="investment-projects-planned"
+                                            class="menu__options investment-projects__child-input"
+                                            value="investment-projects-planned">
+                                        <span class="menu__pseudo-item menu__pseudo-item_type_checkbox "></span>
+                                        <span
+                                            class="menu__label-text menu__label-text_status menu__label-text_status_planned">Планируется</span>
+                                    </label>
+                                </li>
+                            </ul>
+                            <i class="fa fa-cog fa-2x investment-projects__settings" aria-hidden="true"></i>
+                        </li>
+                        <li class="menu__item">
+                            <label for="engineering-infrastructure" class="form__label form__label_direction_right">
+                                <input type="checkbox" name="extra-option" id="engineering-infrastructure"
+                                    class="menu__options" value="engineering-infrastructure">
+                                <span class="menu__pseudo-item menu__pseudo-item_type_checkbox"></span>
+                                <span class="menu__label-text">Инженерная инфраструктура</span>
+                            </label>
+                        </li>
+                        <li class="menu__item">
+                            <label for="transportation-infrastructure" class="form__label form__label_direction_right">
+                                <input type="checkbox" name="extra-option" id="transportation-infrastructure"
+                                    class="menu__options" value="transportation-infrastructure">
+                                <span class="menu__pseudo-item menu__pseudo-item_type_checkbox"></span>
+                                <span class="menu__label-text">Транспортная инфраструктура</span>
+                            </label>
+                        </li>
+                        <li class="menu__item "> <label for="minerals" class="form__label form__label_direction_right">
+                                <input type="checkbox" name="extra-option" id="minerals" class="menu__options"
+                                    value="minerals">
+                                <span class="menu__pseudo-item menu__pseudo-item_type_checkbox"></span>
+                                <span class="menu__label-text">Полезные ископаемые</span>
+                            </label></li>
+                        <li class="menu__item ">
+                            <a class="menu__link" href="#">Тарифы</a>
+                        </li>
+                        <li class="menu__item ">
+                            <a class="menu__link" href="#">Меры поддержки</a>
+                        </li>
+                    </ul>
+                </fieldset>
+                <div class="settings visually-hidden">
+                    <span class="close settings__close">x</span>
+                    <div class="settings__investment-projects">
+                        <ul class="settings__list">
+                            <li class="settings__item">
+                                <input class="settings__datalist settings__datalist_type_investment-projects"
+                                    list="municipality" placeholder="Муниципальное образование">
+                                <datalist id="municipality">
+                                    <option value="Бабаевский район">
+                                    <option value="Бабушкинский район">
+                                    <option value="Белозерский район">
+                                    <option value="Вологда - городской округ">
+                                    <option value="Вытегорский район">
+                                    <option value="Грязовецкий район">
+                                    <option value="Кирилловский район">
+                                    <option value="Сокольский район">
+                                </datalist>
+                            </li>
+                            <li class="settings__item">
+                                <input class="settings__datalist settings__datalist_type_investment-projects"
+                                    list="investor" placeholder="Инвестор">
+                                <datalist id="investor">
+                                    <option value="Селекционно-Генетический центр рыбоводства">
+                                    <option value="Великоустюгская кистещеточная фабрика">
+                                    <option value="Реестр инвестиционных площадок">
+                                    <option value="Инвестиционный потенциал моногорода Красавино">
+                                </datalist>
+                            </li>
+                            <li class="settings__item">
+                                <input class="settings__datalist settings__datalist_type_investment-projects"
+                                    list="type" placeholder="Тип проекта">
+                                <datalist id="type">
+                                    <option value="Коммерческий">
+                                    <option value="Финансовый">
+                                    <option value="Экономический">
+                                    <option value="Социально-экономический">
+                                </datalist>
+                            </li>
+                            <li class="settings__item">
+                                <input class="settings__datalist settings__datalist_type_investment-projects"
+                                    list="business-area" placeholder="Сфера деятельности">
+                                <datalist id="business-area">
+                                    <option value="Туризм">
+                                    <option value="Транспорт и логистика">
+                                    <option value="Лесопромышленный комплекс">
+                                    <option value="Агропромышленный комплекс">
+                                    <option value="Социальная сфера и спорт">
+                                </datalist>
+                            </li>
+                            <li class="settings__item">
+                                <input class="settings__datalist settings__datalist_type_year" type="number" min="1900"
+                                    max="2200" placeholder="Год начала реализации проекта" />
+                            </li>
+                            <li class="settings__item">
+                                <input class="settings__datalist settings__datalist_type_year" type="number" min="1900"
+                                    max="2200" placeholder="Год окончания реализации проекта" />
+                            </li>
+
+                            <li class="settings__item">
+                                <input
+                                    class="settings__datalist settings__datalist_type_quantity settings__datalist_disabled"
+                                    placeholder="Объем инвестиций:" disabled>
+
+                                <div class="settings__controls settings__controls_type_quantity">
+                                    <label class="settings__min-quantity min-quantity">
+                                        от <input class="min-count" type="number" name="min-price" placeholder="0"
+                                            min="0" max="1">
+                                    </label>
+                                    <label class="settings__max-quantity max-quantity">
+                                        до <input class="max-count" type="number" name="max-price"
+                                            placeholder="15000000" min="0">
+                                    </label>
+                                </div>
+                            </li>
+
+                            <li class="settings__item">
+                                <input
+                                    class="settings__datalist settings__datalist_type_price settings__datalist_disabled"
+                                    placeholder="Количество рабочих мест:" disabled>
+
+                                <div class="settings__controls settings__controls_type_price">
+                                    <label class="settings__min-price">
+                                        от <input class="min-count" type="number" name="min-price" placeholder="0"
+                                            min="0" max="1">
+                                    </label>
+                                    <label class="settings__max-price">
+                                        до <input class="max-count" type="number" name="max-price" placeholder="10000"
+                                            min="1" max="10000">
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="settings__item settings__btns">
+                        <button class="settings__btn" type="button">Показать на карте</button>
+                        <button class="settings__btn" type="button">Список объектов</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        <footer class="footer">
+            <p class="footer__copyright">&copy; Разработано БУ ВО "Электронный регион"</p>
+        </footer>
+    </div>
+    <script async src="./script.js"></script>
+</body>
+
+</html>
